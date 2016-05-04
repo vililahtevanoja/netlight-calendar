@@ -4,7 +4,15 @@ var router = express.Router();
 /* GET users listing. */
 router.get('/', function(req, res, next) {
     res.setHeader('Content-Type', 'application/json');
-    res.send(JSON.stringify({ item: { text: "this is the TEXT!", something: "jeah!!122" } }));
+    var JSON = {
+        "item": [
+           {
+             "text": "production-web-1: NOT RESPONDING",
+             "type": 1
+           }
+         ]
+    };
+    res.send(JSON.stringify(JSON));
 });
 
 module.exports = router;
