@@ -4,7 +4,7 @@ var router = express.Router();
 /* GET users listing. */
 router.get('/', function(req, res, next) {
     res.setHeader('Content-Type', 'application/json');
-    var JSON = {
+    var json_object = {
         "item": [
            {
              "text": "production-web-1: NOT RESPONDING",
@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
            }
          ]
     };
-    res.send(JSON.stringify(JSON));
+    res.send(JSON.stringify(json_object));
 });
 
 module.exports = router;
