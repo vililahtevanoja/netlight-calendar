@@ -7,8 +7,8 @@ router.get('/', function(req, res, next) {
     var json_object = {
         "item": [
            {
-             "text": "production-web-1: NOT RESPONDING",
-             "type": 1
+             "text": "<strong>Something here!</strong>",
+             "type": 123
            }
          ]
     };
