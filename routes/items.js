@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
         "item": [
            {
              "text": "<strong>Something here!</strong>",
-             "type": 12345
+             "type": 123456789
            }
          ]
     };
