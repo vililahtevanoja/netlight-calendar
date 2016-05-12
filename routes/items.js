@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
              "text": "<strong>Something here!</strong>",
              "type": 123456789
            }
-         ]
+        ]
     };
     res.send(JSON.stringify(json_object));
 });
