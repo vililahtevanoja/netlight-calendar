@@ -1,0 +1,8 @@
+{
+  "name": "netlight-calendar",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": "^2.2.3",
+    "fullcalendar": "^2.7.1"
+  }
+}
