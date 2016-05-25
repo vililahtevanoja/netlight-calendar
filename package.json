@@ -5,7 +5,8 @@
   "main": "bin/www",
   "scripts": {
     "start": "node ./bin/www",
-    "heroku": "heroku local"
+    "heroku": "heroku local",
+    "postinstall": "./node_modules/bower/bin/bower install"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -18,6 +19,7 @@
     "morgan": "~1.6.1",
     "serve-favicon": "~2.3.0"
   },
+
   "engines": {
     "node": "5.6.0"
   }
