@@ -8,7 +8,7 @@ var EVENT = 'VEVENT';
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   var months = months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  var pop_corner_url = '';
+  var pop_corner_url = 'http://outlook.office365.com/owa/calendar/4048201c9bac4cb0abe6d5c5865d8fc1@netlight.fi/7d24a835be974460901686ec348a52c613748629002781753650/calendar.ics';
   var response = [];
   ical.fromURL(pop_corner_url, {}, function(err, data) {
     for (var k in data){

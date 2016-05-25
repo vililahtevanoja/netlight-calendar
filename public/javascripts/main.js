@@ -8,11 +8,13 @@ $(document).ready(function() {
   $('#calendar1').fullCalendar({
     // put your options and callbacks here
     header: {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'month,agendaWeek,agendaDay',
-      width: '500'
+      left: '',
+      center: '',
+      right: '',
     },
+    handleWindowResize: false,
+    defaultView: 'agendaDay',
+    width: '500',
     weekends: false,
     slotMinutes: 15,
     timezone: 'UTC',

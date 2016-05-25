@@ -6,3 +6,15 @@ body {
 a {
   color: #00B7FF;
 }
+
+img.logo {
+  width: 300px;
+}
+
+div#calendar1 {
+  width: 500px;
+}
+
+div#calendar2 {
+  width: 500px;
+}
