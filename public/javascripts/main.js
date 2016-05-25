@@ -7,6 +7,7 @@ $(document).ready(function() {
   var minTime = "06:00:00";
   var maxTime = "20:00:00";
   var defaultView = 'agendaDay';
+  var timeFormat = 'HH:mm';
   var color = '#281B48';
   var textColor = 'white';
 
@@ -23,6 +24,7 @@ $(document).ready(function() {
     defaultView: defaultView,
     aspectRatio: aspectRatio,
     weekends: false,
+    axisFormat: timeFormat,
     minTime: minTime,
     maxTime: maxTime,
     timezone: 'UTC',
@@ -51,6 +53,7 @@ $(document).ready(function() {
     defaultView: defaultView,
     aspectRatio: aspectRatio,
     weekends: false,
+    axisFormat: timeFormat,
     minTime: minTime,
     maxTime: maxTime,
     timezone: 'UTC',
