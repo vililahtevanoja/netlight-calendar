@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+  padding: 30px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -7,14 +7,22 @@ a {
   color: #00B7FF;
 }
 
+h3 {
+  color: #281B48;
+  margin: 0px;
+}
+
 img.logo {
-  width: 300px;
+  width: 200px;
+  margin-bottom: 20px;
 }
 
-div#calendar1 {
-  width: 500px;
+div#container1 {
+  float: left;
+  width: 50%;
 }
 
-div#calendar2 {
-  width: 500px;
+div#container2 {
+  float: left;
+  width: 50%;
 }
