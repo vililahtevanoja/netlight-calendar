@@ -1,5 +1,6 @@
 body {
-  padding: 30px;
+  margin: 0px;
+  padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -13,16 +14,38 @@ h3 {
 }
 
 img.logo {
-  width: 200px;
-  margin-bottom: 20px;
+  margin: 20px;
+  width: 400px;
 }
 
-div#container1 {
-  float: left;
-  width: 50%;
+div.fc-content table {
+  height: 75px !important;
 }
 
-div#container2 {
-  float: left;
-  width: 50%;
+th.fc-widget-header {
+  color: #ffffff;
+  background-color: #281B48;
+  font-size: 1.1em;
+}
+
+div.fc-toolbar {
+  display: none;
+}
+
+div.fc-content {
+  height: 50px;
+  vertical-align: middle;
+}
+
+hr.timeline {
+  position: absolute;
+  border-left: 0;
+  border-top: 0;
+  border-bottom: 0;
+  border-right: 3px solid #eeae32;
+  width: 1px;
+  margin: 0;
+  padding: 0;
+  z-index: 1000;
+  height: auto;
 }

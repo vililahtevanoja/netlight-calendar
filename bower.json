@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "dependencies": {
     "jquery": "^2.2.3",
-    "fullcalendar": "^2.7.1"
+    "fullcalendar": "^2.7.1",
+    "scheduler": "^4.3.1",
+    "fullcalendar-scheduler": "^1.3.1"
   }
 }
