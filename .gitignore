@@ -2,5 +2,5 @@
 /bower_components
 /npm-debug.log
 /.idea
-/config/calendars.json
+#/config/calendars.json
 /config/config.json

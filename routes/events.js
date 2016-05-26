@@ -4,8 +4,17 @@ var ical = require('ical');
 var fs = require("fs");
 const isset = require('isset');
 
-var contents = fs.readFileSync('./config/calendars.json');
-var calendars = JSON.parse(contents);
+var contents = null;
+try {
+  contents = fs.readFileSync('./config/calendars.json');
+  var calendars = JSON.parse(contents);
+} catch(exception) {
+  console.log("calendars.json file not found!");
+}
+
+if (contents === null) {
+
+}
 
 var TIMEZONE = 'VTIMEZONE';
 var EVENT = 'VEVENT';
