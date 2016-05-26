@@ -34,18 +34,18 @@ div.fc-toolbar {
 
 div.fc-content {
   height: 50px;
-  vertical-align: middle;
 }
 
-hr.timeline {
-  position: absolute;
-  border-left: 0;
-  border-top: 0;
-  border-bottom: 0;
-  border-right: 3px solid #eeae32;
-  width: 1px;
-  margin: 0;
-  padding: 0;
-  z-index: 1000;
-  height: auto;
+div.fc-cell-content {
+  height: 50px;
+  line-height: 50px;
+}
+
+div.fc-now-indicator.fc-now-indicator-line {
+  border-color: #eeae32 !important;
+  border-width: 2px;
+}
+
+div.fc-now-indicator.fc-now-indicator-arrow {
+  border-color: #eeae32;
 }
