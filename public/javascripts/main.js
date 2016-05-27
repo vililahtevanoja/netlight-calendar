@@ -10,7 +10,7 @@ $(document).ready(function() {
   var timeFormat = 'HH:mm';
   var color = '#281B48';
   var textColor = 'white';
-  var refreshInterval = 60 * 5; // 5minutes
+  var refreshInterval = 5 * 60; // 5minutes
 
   $.getJSON("/config.json", function(json) {
     aspectRatio = json.aspectRatio;
@@ -70,11 +70,21 @@ $(document).ready(function() {
 
       eventSources: eventResources,
       resourceLabelText: 'Rooms',
-      resources: roomResources
+      resources: roomResources,
+
+      eventAfterAllRender: function (view) {
+        console.log('Events refreshed');
+        $('#status').css('display', 'none');
+        console.log(view);
+      }
 
     });
 
-    setInterval(function(){$('#calendar').fullCalendar('refetchEvents')}, refreshInterval * 1000);
+    setInterval(function(){
+      console.log("Refreshing calendar events");
+      $('#calendar').fullCalendar('refetchEvents');
+      $('#status').css('display', 'block');
+    }, refreshInterval * 1000);
 
   });
 
