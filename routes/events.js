@@ -9,7 +9,8 @@ try {
   contents = fs.readFileSync('./config/calendars.json');
   var calendars = JSON.parse(contents);
 } catch(exception) {
-  console.log("calendars.json file not found or could not be parsed!");
+    console.log("calendars.json file not found or could not be parsed! Trying to load Heroku calendar variable.");
+    calendars = JSON.parse(process.env.calendars);
 }
 
 var TIMEZONE = 'VTIMEZONE';
