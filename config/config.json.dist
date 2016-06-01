@@ -3,5 +3,6 @@
   "minTime": "06:00:00",
   "maxTime": "21:00:00",
   "timeFormat": "HH:mm",
-  "refreshInterval": 300
+  "refreshInterval": 300,
+  "allowedIps": []
 }

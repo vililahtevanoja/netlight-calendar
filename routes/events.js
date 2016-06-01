@@ -9,11 +9,7 @@ try {
   contents = fs.readFileSync('./config/calendars.json');
   var calendars = JSON.parse(contents);
 } catch(exception) {
-  console.log("calendars.json file not found!");
-}
-
-if (contents === null) {
-
+  console.log("calendars.json file not found or could not be parsed!");
 }
 
 var TIMEZONE = 'VTIMEZONE';
@@ -31,8 +27,6 @@ router.get('/:calendar', function(req, res, next) {
         if (data.hasOwnProperty(k)) {
           var ev = data[k];
           if (ev.type === EVENT) {
-            console.log("START", ev.start);
-            console.log("END", ev.end);
             ev.title = ev.summary;
             ev.resourceId = calendars[req.params.calendar].resourceId;
             response.push(ev);
