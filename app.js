@@ -39,6 +39,7 @@ app.haveAccess = function(req, res, next) {
    //you can do this however you want with whatever variables you set up
 
   var request_ip = req.header('x-forwarded-for');
+  console.log("CONF X-FORWARD", config.allowedIPs, request_ip);
   if (isset(config.allowedIPs) && isset(request_ip)) {
     if (config.allowedIPs.indexOf(request_ip) > -1) {
       console.log("IN ARRAY", config.allowedIPs);
