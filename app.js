@@ -20,7 +20,7 @@ try {
   config = JSON.parse(contents);
 } catch(exception) {
   console.log("config.json file not found! Trying to load Heroku config variable");
-  config = process.env.config;
+  config = JSON.parse(process.env.config);
 
   console.log("PROCESS CONFIG", config);
 
