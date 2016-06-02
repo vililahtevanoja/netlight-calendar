@@ -38,7 +38,12 @@ app.haveAccess = function(req, res, next) {
    //CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
    //you can do this however you want with whatever variables you set up
 
-  var request_ip = req.header('x-forwarded-for');
+  var environment = app.get('env');
+  var request_ip = req.header('host');
+  if (environment === 'production') {
+    request_ip = req.header('x-forwarded-for');
+  }
+
   console.log("CONF X-FORWARD", config.allowedIPs, request_ip);
   if (isset(config.allowedIPs) && isset(request_ip)) {
     if (config.allowedIPs.indexOf(request_ip) > -1) {
@@ -84,6 +89,7 @@ app.use(function(req, res, next) {
 
 // development error handler
 // will print stacktrace
+console.log("APP ENV", app.get('env'));
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     console.log("HEADER", req.headers);

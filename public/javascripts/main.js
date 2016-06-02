@@ -12,40 +12,50 @@ $(document).ready(function() {
   var textColor = 'white';
   var refreshInterval = 5 * 60; // 5minutes
 
-  $.getJSON("/config.json", function(json) {
-    aspectRatio = json.aspectRatio;
-    minTime = json.minTime;
-    maxTime = json.maxTime;
-    timeFormat = json.timeFormat;
-    refreshInterval = json.refreshInterval;
-  });
+  var Calendar = Calendar || function() {
+    this.eventResources = [];
+    this.roomResources = [];
+  };
 
-  // Load calendars.json config file
-  $.getJSON("/calendars.json", function(json) {
-    console.log("Calendars JSON", json);
+  Calendar.prototype.fetchConfig = function() {
+    return $.getJSON("/config.json", function(json) {
+      aspectRatio = json.aspectRatio;
+      minTime = json.minTime;
+      maxTime = json.maxTime;
+      timeFormat = json.timeFormat;
+      refreshInterval = json.refreshInterval;
+    });
+  };
 
-    var calendars = json;
-    var eventResources = [];
-    var roomResources = [];
-    for (var calendar in calendars){
-      if (calendars.hasOwnProperty(calendar)) {
-        var current = calendars[calendar];
-        eventResources.push(
-          {
-            url: '/events/' + current.resourceId,
-            color: color,
-            textColor: textColor,
-          }
-        );
-        roomResources.push(
-          {
-            id: current.resourceId,
-            title: current.title,
-          }
-        )
+  Calendar.prototype.fetchCalendars = function() {
+    var that = this;
+    // Load calendars.json config file
+    return $.getJSON("/calendars.json", function(json) {
+      console.log("Calendars JSON", json);
+
+      var calendars = json;
+      for (var calendar in calendars){
+        if (calendars.hasOwnProperty(calendar)) {
+          var current = calendars[calendar];
+          that.eventResources.push(
+            {
+              url: '/events/' + current.resourceId,
+              color: color,
+              textColor: textColor,
+            }
+          );
+          that.roomResources.push(
+            {
+              id: current.resourceId,
+              title: current.title,
+            }
+          )
+        }
       }
-    }
+    });
+  };
 
+  Calendar.prototype.init = function() {
     $('#calendar').fullCalendar({
       schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
       // put your options and callbacks here
@@ -68,9 +78,9 @@ $(document).ready(function() {
       ignoreTimezone: false,
       timezone: 'local',
 
-      eventSources: eventResources,
+      eventSources: this.eventResources,
       resourceLabelText: 'Rooms',
-      resources: roomResources,
+      resources: this.roomResources,
 
       eventAfterAllRender: function (view) {
         console.log('Events refreshed');
@@ -85,7 +95,14 @@ $(document).ready(function() {
       $('#calendar').fullCalendar('refetchEvents');
       $('#status').css('display', 'block');
     }, refreshInterval * 1000);
+  };
 
+  var NetlightCalendar = new Calendar();
+  $.when(
+    NetlightCalendar.fetchConfig(),
+    NetlightCalendar.fetchCalendars()
+  ).done(function() {
+    NetlightCalendar.init();
   });
 
 
