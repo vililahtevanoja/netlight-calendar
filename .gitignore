@@ -4,3 +4,4 @@
 /.idea
 /config/calendars.json
 /config/config.json
+/.env

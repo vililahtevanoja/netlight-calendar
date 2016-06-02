@@ -4,13 +4,10 @@ var ical = require('ical');
 var fs = require("fs");
 const isset = require('isset');
 
-var contents = null;
 try {
-  contents = fs.readFileSync('./config/calendars.json');
-  var calendars = JSON.parse(contents);
+  var calendars = JSON.parse(process.env.calendars);
 } catch(exception) {
-    console.log("calendars.json file not found or could not be parsed! Trying to load Heroku calendar variable.");
-    calendars = JSON.parse(process.env.calendars);
+    console.log("Unable to load Heroku calendar objects.");
 }
 
 var TIMEZONE = 'VTIMEZONE';

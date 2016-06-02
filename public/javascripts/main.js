@@ -18,7 +18,8 @@ $(document).ready(function() {
   };
 
   Calendar.prototype.fetchConfig = function() {
-    return $.getJSON("/config.json", function(json) {
+    return $.getJSON("/configs/config", function(json) {
+      console.log("Config JSON", json);
       aspectRatio = json.aspectRatio;
       minTime = json.minTime;
       maxTime = json.maxTime;
@@ -30,9 +31,8 @@ $(document).ready(function() {
   Calendar.prototype.fetchCalendars = function() {
     var that = this;
     // Load calendars.json config file
-    return $.getJSON("/calendars.json", function(json) {
+    return $.getJSON("/configs/calendars", function(json) {
       console.log("Calendars JSON", json);
-
       var calendars = json;
       for (var calendar in calendars){
         if (calendars.hasOwnProperty(calendar)) {
@@ -97,12 +97,30 @@ $(document).ready(function() {
     }, refreshInterval * 1000);
   };
 
+  Calendar.prototype.reloadPageAt = function(hours, minutes, seconds) {
+    var now = new Date();
+    var then = new Date();
+
+    if(now.getHours() > hours ||
+      (now.getHours() == hours && now.getMinutes() > minutes) ||
+      now.getHours() == hours && now.getMinutes() == minutes && now.getSeconds() >= seconds) {
+      then.setDate(now.getDate() + 1);
+    }
+    then.setHours(hours);
+    then.setMinutes(minutes);
+    then.setSeconds(seconds);
+
+    var timeout = (then.getTime() - now.getTime());
+    setInterval(function() { window.location.reload(true); }, timeout);
+  };
+
   var NetlightCalendar = new Calendar();
   $.when(
     NetlightCalendar.fetchConfig(),
     NetlightCalendar.fetchCalendars()
   ).then(function() {
     NetlightCalendar.init();
+    NetlightCalendar.reloadPageAt(01, 00, 00);
   });
 
 

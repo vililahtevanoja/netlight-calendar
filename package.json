@@ -5,7 +5,7 @@
   "main": "bin/www",
   "scripts": {
     "start": "node ./bin/www",
-    "heroku": "heroku local",
+    "heroku": "nf start -f Procfile-dev",
     "postinstall": "./node_modules/bower/bin/bower install"
   },
   "dependencies": {
