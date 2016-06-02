@@ -89,7 +89,6 @@ app.use(function(req, res, next) {
 
 // development error handler
 // will print stacktrace
-console.log("APP ENV", app.get('env'));
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     console.log("HEADER", req.headers);

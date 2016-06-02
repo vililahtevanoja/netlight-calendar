@@ -101,7 +101,7 @@ $(document).ready(function() {
   $.when(
     NetlightCalendar.fetchConfig(),
     NetlightCalendar.fetchCalendars()
-  ).done(function() {
+  ).then(function() {
     NetlightCalendar.init();
   });
 
