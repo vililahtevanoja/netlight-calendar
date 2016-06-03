@@ -97,7 +97,7 @@ $(document).ready(function() {
     }, refreshInterval * 1000);
   };
 
-  Calendar.prototype.reloadPageAt = function(hours, minutes, seconds) {
+  Calendar.prototype.autoReloadPageAt = function(hours, minutes, seconds) {
     var now = new Date();
     var then = new Date();
 
@@ -111,7 +111,12 @@ $(document).ready(function() {
     then.setSeconds(seconds);
 
     var timeout = (then.getTime() - now.getTime());
-    setInterval(function() { window.location.reload(true); }, timeout);
+    // Set initial reload timeout
+    setTimeout(function() {
+      window.location.reload(true);
+      // Set auto updating interval after every 24h
+      setInterval(function () { window.location.reload(true); }, 86400);
+    }, timeout);
   };
 
   var NetlightCalendar = new Calendar();
@@ -120,7 +125,7 @@ $(document).ready(function() {
     NetlightCalendar.fetchCalendars()
   ).then(function() {
     NetlightCalendar.init();
-    NetlightCalendar.reloadPageAt(01, 00, 00);
+    NetlightCalendar.autoReloadPageAt(01, 00, 00);
   });
 
 
