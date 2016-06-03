@@ -114,7 +114,7 @@ $(document).ready(function() {
     // Set initial reload timeout
     setTimeout(function() {
       window.location.reload(true);
-      // Set auto updating interval after every 24h
+      // Set auto updating interval after every 24h (86400 seconds)
       setInterval(function () { window.location.reload(true); }, 86400);
     }, timeout);
   };
@@ -125,7 +125,8 @@ $(document).ready(function() {
     NetlightCalendar.fetchCalendars()
   ).then(function() {
     NetlightCalendar.init();
-    NetlightCalendar.autoReloadPageAt(01, 00, 00);
+    // Autoreload every day at 01:00:00
+    NetlightCalendar.autoReloadPageAt(1, 0, 0);
   });
 
 
