@@ -28,7 +28,7 @@ app.haveAccess = function(req, res, next) {
     request_ip = req.header('x-forwarded-for');
   }
 
-  var access_denied = { message: "Your IP is not in the whitelist", error: { status: "Error", stack: ""} }
+  var access_denied = { message: "Your IP is not in the whitelist", error: { status: "Access Denied", stack: ""} }
 
   console.log("Request IP", request_ip);
   console.log("Allowed IP", config.allowedIPs);

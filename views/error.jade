@@ -1,6 +1,8 @@
 extends elayout
 
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+  img(class='logo error' src='/images/netlight_smaller.png')
+  div#error-container
+    h1= message
+    h2= error.status
+    pre #{error.stack}
