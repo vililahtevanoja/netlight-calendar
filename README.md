@@ -21,3 +21,6 @@ Create a new local .env file in the project root and add the following content:
 >calendars={ "pop_corner": { "title": "Pop Corner", "url": "http://outlook.office365.com/owa/calendar/abc/calendar.ics", "resourceId": "pop_corner" }, "internet_cafe": { "title": "Internet Cafe", "url": "http://outlook.office365.com/owa/calendar/xyz/calendar.ics", "resourceId": "internet_cafe" } }
 
 and add your calendar urls and info
+
+When running in production environment, i.e. Heroku, add same config variables to your ENV (environment). In heroku case: 
+>App -> Settings -> Config Vars
