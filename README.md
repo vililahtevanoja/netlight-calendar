@@ -1,5 +1,7 @@
 # netlight-calendar
 
+Room booking calendar overview. Usable through browser to see which rooms are booked and which ones are available.
+
 To setup:
 >npm install
 
